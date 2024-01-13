@@ -54,3 +54,91 @@ console.log(
 console.log(
   calculateEngravingPrice('Donec orci lectus aliquam est magnis', 20),
 ); // 120
+
+// _____________________________________________________________________
+
+// Напиши функцію findLongestWord(string), яка приймає параметром довільний рядок (в рядку будуть тільки слова і прогалини) і повертає найдовше слово в цьому рядку.
+
+const findLongestWord = function (string) {
+  let splittedString = string.split(" ")
+  let lengthArray = []
+  for (let i = 0; i < splittedString.length; i++) {
+    const element = splittedString[i];
+    lengthArray.push(element.length)
+  }
+  let biggestNumber = Math.max.apply(null, lengthArray)
+  let indexOfBigstNum = lengthArray.indexOf(biggestNumber)
+
+  return splittedString[indexOfBigstNum]
+};
+
+/*
+ * Виклич функції для перевірки працездатності твоєї реалізації.
+ */
+console.log(findLongestWord('The quick brown fox jumped over the lazy dog')); // 'jumped'
+
+console.log(findLongestWord('Google do a roll')); // 'Google'
+
+console.log(findLongestWord('May the force be with you')); // 'force'
+
+// _____________________________________________________________________
+
+// Напиши функцію formatString(string) яка приймає рядок і форматує його якщо необхідно.
+
+// Якщо довжина рядка не перевищує 40 символів, функція повертає її в початковому   вигляді.
+// Якщо довжина більше 40 символів, то функція обрізає рядок до 40-ка символів і додає в кінець рядка три крапки '...', після чого повертає   укорочену версію.
+
+const formatString = function (string) {
+  let lengthOfString = string.length
+  if (lengthOfString <= 40) {
+    return string
+  }
+  else {
+    let toMinus = 43 - lengthOfString
+    lettersArray = string.split('')
+    let newArray = lettersArray.slice(0, toMinus)
+    let newString = newArray.join("") + "..."
+    return newString
+  }
+};
+
+/*
+ * Виклич функції для перевірки працездатності твоєї реалізації.
+ */
+console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
+// повернеться оригінальний рядок
+
+console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
+// повернеться форматований рядок
+
+console.log(formatString('Curabitur ligula sapien.'));
+// повернеться оригінальний рядок
+
+console.log(
+  formatString(
+    'Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.',
+  ),
+);
+// повернеться форматований рядок
+
+// _____________________________________________________________________
+
+// Напиши функцію checkForSpam(message), приймаючу 1 параметр message - рядок. Функція перевіряє її на вміст слів spam і sale. Якщо знайшли заборонене слово, то функція повертає true, якщо заборонених слів немає функція повертає false. Слова в рядку можуть бути в довільному регістрі.
+
+const checkForSpam = function (message) {
+  const uppercased = message.toUpperCase()
+  return uppercased.includes("SALE") || uppercased.includes("SPAM")
+};
+
+/*
+ * Викличи функції для перевірки працездатності твоєї реалізації.
+ */
+console.log(checkForSpam('Latest technology news')); // false
+
+console.log(checkForSpam('JavaScript weekly newsletter')); // false
+
+console.log(checkForSpam('Get best sale offers now!')); // true
+
+console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
+
+// _____________________________________________________________________
